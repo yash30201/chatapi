@@ -1,6 +1,11 @@
-# Chat api
 ---
-## Structure
+tags: [chatapi]
+title: Structure
+created: '2021-05-03T20:24:54.434Z'
+modified: '2021-05-03T20:43:45.955Z'
+---
+
+# Structure
 + Root
   + Main index file - root target
   + Controllers
@@ -33,4 +38,5 @@
       + post initiate a conversation
       + post post a message with given room id
       + put read mark on a chat room
----
+
+      
