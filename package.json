@@ -1,0 +1,17 @@
+{
+  "name": "chatapi",
+  "version": "1.0.0",
+  "description": "A restAPI providing real time chat services",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "restAPI",
+    "NodeJs",
+    "Express",
+    "Mongodb"
+  ],
+  "author": "yash30201",
+  "license": "ISC"
+}
