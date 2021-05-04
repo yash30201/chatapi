@@ -2,7 +2,8 @@
 ---
 ## Structure
 + Root
-  + Main index file - root target
+  + Server
+    + index server - mail server file where we create our server
   + Controllers
     + User controller
       + onGetAllUsers
@@ -33,4 +34,7 @@
       + post initiate a conversation
       + post post a message with given room id
       + put read mark on a chat room
+  + Middlewares
+    + Json web token(jwt)
+      + Used to preprocess/configure the services provided by jwt middleware and exprote these modified services instead of original ones
 ---

@@ -14,7 +14,7 @@ const markConversationReadByRoomId = async (req, res) => {
 
 }
 
-export default { 
+module.exports =  { 
     getRecentConversation : getRecentConversation,
     getRecentConversationByRoomId : getRecentConversationByRoomId,
     initiate : initiate,

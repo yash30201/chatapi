@@ -10,4 +10,4 @@ router
     .post('/:roomId/message', chatRoom.postMessage)
     .put('/:roomId/mark-read', chatRoom.markConversationReadByRoomId);
 
-export default router;
+module.exports = router;

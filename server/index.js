@@ -3,6 +3,31 @@ const http = require('http');
 const logger = require('morgan');
 const cors = require('cors');
 
+// Mongo Db connection
+const mongoose = require('mongoose');
+const config = require('./config/config');
+
+const CONNECTION_URL = `mongodb://${config.db.url}/${config.db.name}`;
+
+mongoose.connect(CONNECTION_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+mongoose.connection.on('connected', () => {
+    console.log('MongoDB has connected succesfully');
+})
+mongoose.connection.on('reconnected', () => {
+    console.log('MongoDB has reconnected');
+})
+mongoose.connection.on('error', error => {
+    console.log('MongoDB connection has an error', error);
+    disconnect();
+})
+mongoose.connection.on('disconnected', () => {
+    console.log('Mongo connection is disconnected');
+})
+
+
 // Routes for routers
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
@@ -12,6 +37,7 @@ const deleteRouter = require('./routes/delete');
 // creating express app
 const app = express();
 const port = process.env.PORT || "3000";
+app.set('port', port);
 
 // Middle wares in sequence
 app.use(logger("dev"));

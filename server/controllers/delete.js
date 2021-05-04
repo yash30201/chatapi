@@ -6,7 +6,7 @@ const deleteMessageById = async (req, res) => {
 };
 
 
-export default { 
+module.exports =  { 
     deleteRoomById : deleteRoomById, 
     deleteMessageById : deleteMessageById
 };

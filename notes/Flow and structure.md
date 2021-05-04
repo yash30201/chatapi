@@ -1,13 +1,25 @@
 ---
 tags: [chatapi]
-title: Structure
+title: Flow and structure
 created: '2021-05-03T20:24:54.434Z'
-modified: '2021-05-03T20:43:45.955Z'
+modified: '2021-05-04T11:50:57.977Z'
 ---
 
+# **Flow and structure**
+
+# Flow
++ We create the boilerplate for our api by importing and placing middlewares
++ Creating and palcing routers.
++ Creating and placing controller and their functions for respective routers.
++ Creating the error middleware at last
++ Creating and listeing from server.
+
+
+---
 # Structure
 + Root
-  + Main index file - root target
+  + Server
+    + index server - mail server file where we create our server
   + Controllers
     + User controller
       + onGetAllUsers
@@ -38,5 +50,8 @@ modified: '2021-05-03T20:43:45.955Z'
       + post initiate a conversation
       + post post a message with given room id
       + put read mark on a chat room
+  + Middlewares
+    + Json web token(jwt)
+      + Used to preprocess/configure the services provided by jwt middleware and exprote these modified services instead of original ones
 
       
