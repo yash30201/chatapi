@@ -37,4 +37,6 @@
   + Middlewares
     + Json web token(jwt)
       + Used to preprocess/configure the services provided by jwt middleware and exprote these modified services instead of original ones
+  + Config
+    + config.js - contains all configuration variables
 ---
