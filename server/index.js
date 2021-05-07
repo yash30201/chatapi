@@ -29,7 +29,7 @@ mongoose.connection.on('disconnected', () => {
 
 
 // Routes for routers
-const indexRouter = require('./routes/index');
+const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
 const chatRoomRouter = require('./routes/chatRoom');
 const deleteRouter = require('./routes/delete');
@@ -45,7 +45,7 @@ app.use(express.urlencoded({ extended : false}));
 
 
 // Routers in sequence
-app.use('/',indexRouter);
+app.use('/',authRouter);
 app.use('/users', userRouter);
 app.use('/room', chatRoomRouter);
 app.use('/delete', deleteRouter);

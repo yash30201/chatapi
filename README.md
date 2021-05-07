@@ -1,4 +1,6 @@
 # Chat api
+
+Chech the docs at [postman docs](https://documenter.getpostman.com/view/15604030/TzRRC8bB)
 ---
 ## Structure
 + Root
