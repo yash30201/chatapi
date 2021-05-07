@@ -2,18 +2,26 @@
 tags: [chatapi]
 title: Flow and structure
 created: '2021-05-03T20:24:54.434Z'
-modified: '2021-05-04T11:50:57.977Z'
+modified: '2021-05-06T18:46:09.636Z'
 ---
 
 # **Flow and structure**
 
 # Flow
+
+### Boilerplate 
 + We create the boilerplate for our api by importing and placing middlewares
 + Creating and palcing routers.
 + Creating and placing controller and their functions for respective routers.
 + Creating the error middleware at last
 + Creating and listeing from server.
 
+### User schema, model, controller and router
++ Create schema and model
++ Validate data in controller before using the data using express-validator
++ If valid the do the needful and return the processed data
++ else return error message with status
++ Read User API note for more details
 
 ---
 # Structure

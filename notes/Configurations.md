@@ -1,7 +1,8 @@
 ---
+tags: [chatapi]
 title: Configurations
 created: '2021-05-04T11:34:08.505Z'
-modified: '2021-05-04T12:44:58.183Z'
+modified: '2021-05-06T18:47:05.730Z'
 ---
 
 # Configurations

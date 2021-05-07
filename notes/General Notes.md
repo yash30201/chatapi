@@ -2,7 +2,7 @@
 tags: [chatapi]
 title: General Notes
 created: '2021-05-03T13:18:18.144Z'
-modified: '2021-05-03T13:51:05.628Z'
+modified: '2021-05-06T06:02:39.660Z'
 ---
 
 # General Notes
@@ -21,6 +21,7 @@ modified: '2021-05-03T13:51:05.628Z'
 },
 ```
 + Create a server directory, and cd into it and do things here
++ WebSocket is a communication protocol which provides a full-duplex and low-latency channel between the server and the browser.
 
 
 

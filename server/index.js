@@ -21,7 +21,7 @@ mongoose.connection.on('reconnected', () => {
 })
 mongoose.connection.on('error', error => {
     console.log('MongoDB connection has an error', error);
-    disconnect();
+    mongoose.disconnect();
 })
 mongoose.connection.on('disconnected', () => {
     console.log('Mongo connection is disconnected');
@@ -37,7 +37,6 @@ const deleteRouter = require('./routes/delete');
 // creating express app
 const app = express();
 const port = process.env.PORT || "3000";
-app.set('port', port);
 
 // Middle wares in sequence
 app.use(logger("dev"));
@@ -66,5 +65,5 @@ app.use('*', function(err, req, res, next){
 const server = http.createServer(app);
 server.listen(port);
 server.on("listening", () =>{
-    console.log('Listening on port:: http://localhost:${port}/');
+    console.log(`Listening on port:: http://localhost:${port}/`);
 })
