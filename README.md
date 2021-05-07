@@ -1,12 +1,15 @@
 # Chat api
 
-Chech the docs at [postman docs](https://documenter.getpostman.com/view/15604030/TzRRC8bB)
+Check the documentation at [postman docs](https://documenter.getpostman.com/view/15604030/TzRRC8bB)
 ---
 ## Structure
 + Root
   + Server
     + index server - main server file where we create our server
   + Controllers
+    + Auth controller
+      + onLoginUser
+      + onSignupUser
     + User controller
       + onGetAllUsers
       + onCreateUser
