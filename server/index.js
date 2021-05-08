@@ -2,6 +2,8 @@ const express = require('express');
 const http = require('http');
 const logger = require('morgan');
 const cors = require('cors');
+const socketio = require('socekt.io');
+const WebSockets = require('./utils/WebSockets');
 
 // Mongo Db connection
 const mongoose = require('mongoose');
@@ -63,6 +65,11 @@ app.use('*', function(err, req, res, next){
 
 // Create http server and start listening
 const server = http.createServer(app);
+
+// Create socket connection
+global.io = socketio.listen(server);
+global.io.on('connection', WebSockets.connection);
+
 server.listen(port);
 server.on("listening", () =>{
     console.log(`Listening on port:: http://localhost:${port}/`);
