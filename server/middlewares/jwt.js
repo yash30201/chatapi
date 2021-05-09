@@ -11,6 +11,7 @@ const decode = async (req, res, next) => {
         req.userId = decoded.user_id;
         return next();
     } catch (err) {
+        console.log(accessToken, decode);
         return res.status(401).json({ success : false, error : error});
     }
 }

@@ -23,19 +23,19 @@ class WebSockets {
             client.leave(room);
         });
     }
-}
-
-subscribeOtherUser(room, otherUserId) {
-    const userSockets = this.users.filter((user) => {
-        user.userId == otherUserId
-    });
-    userSockets.map((userInfo) => {
-        const socketConn = global.io.sockets.connected(userInfo.socketId);
-        if(socketConn){
-            socketConn.join(room);
-        }
-    });
-}
-
+    
+    subscribeOtherUser(room, otherUserId) {
+        const userSockets = this.users.filter((user) => {
+            user.userId == otherUserId
+        });
+        userSockets.map((userInfo) => {
+            const socketConn = global.io.sockets.connected(userInfo.socketId);
+            if(socketConn){
+                socketConn.join(room);
+            }
+        });
+    }
+};
+    
 
 module.exports = new WebSockets();

@@ -2,7 +2,7 @@
 tags: [chatapi]
 title: Configurations
 created: '2021-05-04T11:34:08.505Z'
-modified: '2021-05-06T18:47:05.730Z'
+modified: '2021-05-08T13:22:14.674Z'
 ---
 
 # Configurations
@@ -11,7 +11,7 @@ modified: '2021-05-06T18:47:05.730Z'
 ---
 # MongoDb
 + Write the configuration parameters related to mongodb
-```
+```javascript
 const config = {
   db: {
     url: 'localhost:27017',
@@ -25,7 +25,7 @@ export default config
   + Use the options [useNewUrlParser](https://mongoosejs.com/docs/connections.html#options) and [useUnifiedTopology](https://mongoosejs.com/docs/connections.html#options).
   + Mongo db has four connection states, define what to do for each connection state
     + label - `connected`, `reconnected`, `error`, `disconnected`.
-    + ```
+    + ```javascript
       mongoose.connection.on(label, () => {
         console.log(corresponding label message string);
       })

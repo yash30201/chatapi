@@ -2,7 +2,7 @@
 tags: [chatapi]
 title: General Notes
 created: '2021-05-03T13:18:18.144Z'
-modified: '2021-05-06T06:02:39.660Z'
+modified: '2021-05-08T13:21:55.250Z'
 ---
 
 # General Notes
@@ -10,7 +10,7 @@ modified: '2021-05-06T06:02:39.660Z'
   + (later) express, mongoose, uuid, jsonwebtoken, morgan, socket.io, @withvoid/make-validation
 + In package.json file of node, there's an argument **script**. It allows us to write and access CLI code with just npn run scriptname, for eg,
   + to run `nodemon server/index.js`, we just do `npm run start`, simply insert the key of that command. 
-```
+```json
 "scripts": {
 	"start": "nodemon server/index.js",
 	"start:server": "node server/index.js"

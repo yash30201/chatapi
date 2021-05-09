@@ -2,7 +2,7 @@
 tags: [chatapi]
 title: Flow and structure
 created: '2021-05-03T20:24:54.434Z'
-modified: '2021-05-06T18:46:09.636Z'
+modified: '2021-05-08T13:16:40.497Z'
 ---
 
 # **Flow and structure**
@@ -23,18 +23,30 @@ modified: '2021-05-06T18:46:09.636Z'
 + else return error message with status
 + Read User API note for more details
 
+### Json web token decoder middleware
++ This checks every request that passes though it for authorization header.
++ If present then decodes and adds the properties in the req object so that it can be used further in the application everywhere.
+
+### Auth schema, model, controller and router
++ Same process ad that of user schema.
++ It returns authorization token on successful login.
+
 ---
 # Structure
 + Root
   + Server
-    + index server - mail server file where we create our server
+    + index server - main server file where we create our server
   + Controllers
+    + Auth controller
+      + onLoginUser
+      + onSignupUser
     + User controller
       + onGetAllUsers
       + onCreateUser
       + onGetUserById
-      + onGetUserByEmail
+      + onGetUserByPhoneNumber
       + onDeleteUserById
+      + onDeleteUserByPhoneNumeber
     + ChatRoom controller
       + getRecentConversation
       + getRecentConversationByRoomId 
@@ -45,13 +57,16 @@ modified: '2021-05-06T18:46:09.636Z'
       + deleteRoomById
       + deleteMessageById
   + Routers
-    + Index router - used for login 
+    + Auth router
+      + Login - and get authtoken
+      + Signup -and then again login to get token
     + Users router
       + get all users
       + get users by id
-      + get user by email
+      + get user by phone number
       + post create new user
       + delete user by id
+      + delete user by phone number
     + ChatRoom Router
       + get recent conversations(all)
       + get recent conversation by id
@@ -59,7 +74,8 @@ modified: '2021-05-06T18:46:09.636Z'
       + post post a message with given room id
       + put read mark on a chat room
   + Middlewares
-    + Json web token(jwt)
-      + Used to preprocess/configure the services provided by jwt middleware and exprote these modified services instead of original ones
+    + Json web token decoder
+  + Config
+    + config.js - contains all configuration variables
 
       

@@ -2,8 +2,9 @@ const express = require('express');
 const http = require('http');
 const logger = require('morgan');
 const cors = require('cors');
-const socketio = require('socekt.io');
+const socketio = require('socket.io');
 const WebSockets = require('./utils/WebSockets');
+const decode = require('./middlewares/jwt');
 
 // Mongo Db connection
 const mongoose = require('mongoose');
@@ -48,9 +49,9 @@ app.use(express.urlencoded({ extended : false}));
 
 // Routers in sequence
 app.use('/',authRouter);
-app.use('/users', userRouter);
-app.use('/room', chatRoomRouter);
-app.use('/delete', deleteRouter);
+app.use('/users',  userRouter);
+app.use('/chatRoom',decode, chatRoomRouter);
+app.use('/delete',  deleteRouter);
 
 
 // Last middleware to catch all the errors
@@ -67,10 +68,11 @@ app.use('*', function(err, req, res, next){
 const server = http.createServer(app);
 
 // Create socket connection
-global.io = socketio.listen(server);
+global.io = socketio(server);
 global.io.on('connection', WebSockets.connection);
-
 server.listen(port);
+
 server.on("listening", () =>{
     console.log(`Listening on port:: http://localhost:${port}/`);
 })
+

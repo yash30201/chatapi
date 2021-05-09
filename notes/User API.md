@@ -2,14 +2,14 @@
 tags: [chatapi]
 title: User API
 created: '2021-05-06T18:46:37.147Z'
-modified: '2021-05-07T04:58:57.771Z'
+modified: '2021-05-08T13:21:44.935Z'
 ---
 
 # User API
 ### What is the underlying process ? 
 + All the custom queries is defined in terms of mongoose queries inside the user model.
   + For eg
-  + ```
+  + ```javascript
     userSchema.statics.getUserByPhoneNumber = async function(phoneNumber){
         try{
             const user = await this.findOne({ phoneNumber : phoneNumber});
@@ -21,7 +21,7 @@ modified: '2021-05-07T04:58:57.771Z'
     }
     ``` 
 + The controllers just see if validation check is passed or not and then if passed then calls the required custom made method of usermodel else returns errors
-  + ```
+  + ```javascript
     const onGetUserByPhoneNumber = async (req, res) => {
         try {
             const errors = validationResult(req);
