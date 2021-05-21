@@ -29,7 +29,12 @@ router.post(
 );
 
 
-router.post('/:roomId/message', chatRoom.postMessage)
+router.post(
+    '/message', 
+    body('chatRoomId').notEmpty().isString(),
+    body('messageText').notEmpty(),
+    chatRoom.postMessage
+);
 router.put('/:roomId/mark-read', chatRoom.markConversationReadByChatRoomId);
 router.get('/:roomId', chatRoom.getRecentConversationByChatRoomId);
 module.exports = router;
