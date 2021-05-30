@@ -102,5 +102,53 @@ chatMessageSchema.statics.createPostInChatRoom = async function(
     }
 }
 
+chatMessageSchema.statics.getRecentConversationByChatRoomId = async function(chatRoomId, options){
+    try {
+        const recentConversations = await this.aggregate([
+            { $match : {chatRoomId} },
+            { $sort : {createdAt : -1}},
+            {
+                $lookup : {
+                    from : 'users',
+                    localField : 'postedByUser',
+                    foreignField : '_id',
+                    as : 'postedByUser'
+                }
+            },
+            { $unwind : '$postedByUser'},
+            { $skip : options.page * options.limit},
+            { $limit : options.limit},
+            { $sort : {createdAt : 1}},
+        ]);
+         
+        return {recentConversations};
+    } catch (err) {
+        throw err;
+    }
+}
+
+chatMessageSchema.statics.markConversationReadByChatRoomId = async function(chatRoomId, currentLoggedUser){
+    try {
+        const result = await this.updateMany(
+            {
+                chatRoomId,
+                'readByRecipients.readByUserId' : { $ne : currentLoggedUser}
+            },
+            {
+                $addToSet : {
+                    readByRecipients : {readByUserId : currentLoggedUser}
+                }
+            },
+            {
+                multi : true
+            }
+        );
+        return result;
+    } catch (err) {
+        throw err;
+    }
+}
+
+
 const model = mongoose.model("chatmessage", chatMessageSchema);
 module.exports = model;

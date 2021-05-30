@@ -37,7 +37,7 @@ userSchema.statics.createUser = async function(
     }
 }
 
-userSchema.statics.getUserById = async function(id){
+userSchema.statics.getUserByIds = async function(id){
     try{
         const user = await this.findOne({_id :id});
         if(!user) throw({message : 'No such user exists with this id'});
@@ -47,6 +47,16 @@ userSchema.statics.getUserById = async function(id){
     }
 }
 
+userSchema.statics.getUserByIds = async function(userIds){
+    try {
+        const users = await this.find({
+            _id : {$in : userIds}
+        });
+        return users;
+    } catch (err) {
+        throw err;
+    }
+}
 
 userSchema.statics.getUserByPhoneNumber = async function(phoneNumber){
     try{

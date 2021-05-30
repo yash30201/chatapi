@@ -46,6 +46,46 @@ chatRoomSchema.statics.initiateChatRoom = async function(
     }
 };
 
+chatRoomSchema.statics.getChatRoomByRoomId = async function(chatRoomId){
+    try {
+        const chatRoom = await this.findOne({
+            _id : chatRoomId
+        });
+        return chatRoom;
+    } catch (err) {
+        throw err;
+    }
+}
+
+
+chatRoomSchema.statics.getRecentChatRooms = async function(){
+    try {
+        const chatRooms = await this.aggregate([
+            { $match : {}},
+            {
+                $lookup : {
+                    from : 'users',
+                    localField : 'chatRoomInitiator',
+                    foreignField : '_id',
+                    as : 'chatRoomInitiator'
+                }
+            },
+            { $unwind : '$chatRoomInitiator'},
+            {
+                $lookup : {
+                    from : 'users',
+                    localField : 'userIds',
+                    foreignField : '_id',
+                    as : 'userIds'
+                }
+            }
+
+        ]);
+        return chatRooms;
+    } catch (error) {
+        throw error;
+    }
+}
 const model = mongoose.model('room', chatRoomSchema);
 
 module.exports = model;
