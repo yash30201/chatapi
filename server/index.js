@@ -51,7 +51,7 @@ app.use(express.urlencoded({ extended : false}));
 app.use('/',authRouter);
 app.use('/users',  userRouter);
 app.use('/chatRoom',decode, chatRoomRouter);
-app.use('/delete',  deleteRouter);
+app.use('/delete',decode,deleteRouter);
 
 
 // Last middleware to catch all the errors

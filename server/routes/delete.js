@@ -12,7 +12,7 @@ router.delete(
 
 router.delete(
     '/message/:messageId', 
-    param('roomId').notEmpty().isAlphanumeric(), 
+    param('messageId').notEmpty().isAlphanumeric(), 
     deleteController.deleteMessageById
 );
 
